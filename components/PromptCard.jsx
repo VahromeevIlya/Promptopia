@@ -32,7 +32,7 @@ const PromptCard = ({ post, handleTagClick, handleEdit, handleDelete }) => {
 							{post.creator.username}
 						</h3>
 						<p className="font-inter text-sm text-gray-500">
-							{post.creator.email}
+							secretmail@gmail.com
 						</p>
 					</div>
 				</Link>
