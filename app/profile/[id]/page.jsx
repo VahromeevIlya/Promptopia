@@ -7,17 +7,19 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Profile from "@components/Profile";
 
 const AnotherProfile = () => {
-	const router = useRouter();
-	const searchParams = useSearchParams();
-	const userName = searchParams.get("username");
 	const { data: session } = useSession();
+	const router = useRouter();
 	const pathname = usePathname();
 	const id = pathname.split("/").pop();
-	const [posts, setPosts] = useState([]);
 	if (id === session?.user.id) {
 		router.push("/profile");
 		return;
 	}
+	const searchParams = useSearchParams();
+	const userName = searchParams.get("username");
+
+	const [posts, setPosts] = useState([]);
+
 	useEffect(() => {
 		const fetchPosts = async () => {
 			const response = await fetch(`/api/users/${id}/posts`);
